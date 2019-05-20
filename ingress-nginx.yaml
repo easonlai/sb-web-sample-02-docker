@@ -1,0 +1,25 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ingress-nginx-apple-banana
+  namespace: dev
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+  labels:
+    app.kubernetes.io/name: ingress-nginx-apple-banana
+    app.kubernetes.io/part-of: ingress-nginx-apple-banana
+spec:
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: ingress-nginx-apple-banana
+    app.kubernetes.io/part-of: ingress-nginx-apple-banana
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+    - name: https
+      port: 443
+      targetPort: https
+
+---

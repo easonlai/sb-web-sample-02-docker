@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: sb-web-apple
+  labels:
+    app: sb-web-apple
+spec:
+  containers:
+    - name: sb-web-apple
+      image: qooacr01.azurecr.io/sb-web-apple
+  imagePullSecrets:
+    - name: qooacr01
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: sb-web-apple
+spec:
+  selector:
+    app: sb-web-apple
+  ports:
+    - port: 80 # Default port for image

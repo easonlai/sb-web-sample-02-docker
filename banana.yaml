@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: sb-web-banana
+  labels:
+    app: sb-web-banana
+spec:
+  containers:
+    - name: sb-web-banana
+      image: qooacr01.azurecr.io/sb-web-banana
+  imagePullSecrets:
+    - name: qooacr01
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: sb-web-banana
+spec:
+  selector:
+    app: sb-web-banana
+  ports:
+    - port: 80 # Default port for image

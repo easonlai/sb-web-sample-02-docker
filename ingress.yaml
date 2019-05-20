@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: example-ingress-apple-banana
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /apple
+          backend:
+            serviceName: sb-web-apple
+            servicePort: 80
+        - path: /banana
+          backend:
+            serviceName: sb-web-banana
+            servicePort: 80
